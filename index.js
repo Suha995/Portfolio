@@ -4,9 +4,27 @@ const email = document.getElementById("email");
 const msg = document.getElementById("msg");
 const submitForm = document.querySelector(".contact-container");
 
+function sendEmail(ebody) {
+  Email.send({
+    SecureToken: "fcc8720d-f597-4e00-b31b-e27ef16ce265",
+    To: "suhair.aljammal@gmail.com",
+    From: "suhair.aljammal@gmail.com",
+    Subject: "Email from a contact im my portfolio website",
+    Body: ebody,
+  }).then((message) => alert(message));
+}
+
 submitForm.addEventListener("submit", (e) => {
   e.preventDefault();
   console.log("clicked");
+  let ebody = `
+  <b>Name: </b>${firstname.value}&nbsp;${lastname.value}
+    <br>
+    <b>Email: </b>${email.value}
+    <br>
+    <b>Subject: </b>${msg.value}
+  `;
+  sendEmail(ebody);
 });
 
 function myFacebook() {
@@ -23,14 +41,12 @@ function addBurger() {
   menu.classList.toggle("menu-active");
 }
 
-function sendEmail() {
+function sendEmail(ebody) {
   Email.send({
-    Host: "smtp.elasticemail.com",
-    Username: "username",
-    Password: "password",
-    To: "them@website.com",
-    From: "you@isp.com",
-    Subject: "This is the subject",
-    Body: "And this is the body",
+    SecureToken: "fcc8720d-f597-4e00-b31b-e27ef16ce265",
+    To: "suhair.aljammal@gmail.com",
+    From: "suhair.aljammal@gmail.com",
+    Subject: "Email from a contact im my portfolio website",
+    Body: ebody,
   }).then((message) => alert(message));
 }
